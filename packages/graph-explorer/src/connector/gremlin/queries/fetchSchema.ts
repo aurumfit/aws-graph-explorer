@@ -92,6 +92,7 @@ const fetchVertexLabels = async (
   const values = data.result.data["@value"][0]["@value"];
   const labelsWithCounts: Record<string, number> = {};
   for (let i = 0; i < values.length; i += 2) {
+    if((values[i] as string).startsWith('t-')) continue
     labelsWithCounts[values[i] as string] = (values[i + 1] as GInt64)["@value"];
   }
 
@@ -160,6 +161,7 @@ const fetchEdgeLabels = async (
   const values = data.result.data["@value"][0]["@value"];
   const labelsWithCounts: Record<string, number> = {};
   for (let i = 0; i < values.length; i += 2) {
+    if((values[i] as string).startsWith('t-')) continue
     labelsWithCounts[values[i] as string] = (values[i + 1] as GInt64)["@value"];
   }
 
